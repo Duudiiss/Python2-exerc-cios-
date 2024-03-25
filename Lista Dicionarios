@@ -1,0 +1,108 @@
+'''1. Escreva uma função que conta a quantidade de cada vogal em um texto e
+armazena tal quantidade em um dicionário, onde a chave é a vogal
+considerada. O texto deve ser modificado para ter todas as letras
+maiúsculas'''
+def contaCaractere(palavra):
+    letrasDict = dict()
+    vogais = 'aeiou'
+    for letra in palavra:
+        if letra in vogais:
+            if letra in letrasDict:
+                letrasDict[letra] += 1
+            else:
+                letrasDict[letra] = 1
+    return letrasDict
+    
+contou = contaCaractere('oi amor')
+print(contou.items())
+
+-----------------------------------------------------------------------------------------
+'''2. Escreva um programa que lê duas notas de vários alunos e armazena tais
+notas em um dicionário, onde a chave é o nome do aluno. A entrada de
+dados deve terminar quando for lida uma string vazia como nome. Escreva
+uma função que retorna a média do aluno, dado seu nome'''
+def calculaMedia(alunos, nome):
+    nota1 = alunos[nome][0]
+    nota2 = alunos[nome][1]
+    return (nota1+nota2)/2
+
+alunos = dict()
+nome = input('digite o nome do aluno: ')
+while nome != '':
+    nota1 = float(input('digite a primeira nota: '))
+    nota2 = float(input('digite a segunda nota: '))
+    alunos[nome] = (nota1, nota2)
+    nome = input('digite o nome do próximo aluno: ')
+    
+print(calculaMedia(alunos, 'duda'))
+
+-----------------------------------------------------------------------------------------
+'''3.a) Escreva a função decodifica para exibir na tela a decodificação de
+mensagens. As mensagens foram codificadas utilizando símbolos especiais
+no lugar das vogais. Para decodificar a mensagem deve ser utilizado o
+seguinte dicionário dVogal: dVogal = {'@':'A','&':'E','%':'I','*':'O','$':'U'}
+A função decodifica:
+- recebe uma string com a mensagem codificada em maiúsculas e o
+dicionário dVogal
+- retorna uma string com a mensagem decodificada.
+3.b) Teste a função decodifica para as mensagens abaixo (msg1 e msg2)
+exibindo as respostas retornadas.'''
+
+def decodifica(mensagem, dVogal):
+    msgDecodificada = ''
+    for letra in mensagem:
+        msgDecodificada += dVogal.get(letra, letra)
+    return msgDecodificada
+    
+dVogal = {'@':'A','&':'E','%':'I','*':'O','$':'U'}
+print(decodifica('*$R* BR@NC* *$R* N&GR*, dVogal))
+print(decodifica('Q$@ND* @ CH$V@ P@SS*$', dVogal))
+
+-----------------------------------------------------------------------------------------
+'''4. Escreva uma função que recebe uma lista de compras e um dicionário
+contendo o preço de cada produto disponível em uma determinada loja, e
+retorna o valor total dos itens da lista que estejam disponíveis nesta loja.'''
+
+def compras (listaCompras, supermercado):
+    precoTotal = 0
+    for item in listaCompras:
+        precoTotal+= supermercado.get(item, 0)
+    return precoTotal
+    
+
+lista_de_compras = ['biscoito', 'chocolate', 'farinha']
+supermercado = {'amaciante':4.99,'arroz':10.90,'biscoito':1.69,
+ 'cafe':6.98, 'chocolate':3.79,'farinha':2.99}
+print(compras(lista_de_compras, supermercado))
+
+-----------------------------------------------------------------------------------------
+'''15.Batalha Naval simples:
+a. Monte um dicionário com os tipos de embarcações:
+• 'S': submarinos, 3 posições, pontos 30
+• 'D': destroyers, 5 posições, pontos 50
+• 'C': cruzadores, 7 posições, pontos 100
+b. Monte um dicionário com a localização das embarcações.
+• tupla da posição no mapa da embarcação: sigla da embarcação
+Observação: Há apenas uma embarcação de cada tipo
+Jogo:
+• O usuário digita as coordenadas separadas por virgula. ( -1,-1) para
+finalizar
+• Caso tenha acertado alguma embarcação, o programa exibe o nome
+da embarcação, caso contrário exibe 'Água'.
+• Quando uma embarcação é totalmente destruída, o programa mostra
+os pontos obtidos.
+Término do programa:
+• quando o usuário desiste: coordenadas -1,-1
+• todas as embarcações foram destruídas.
+Em ambos os casos, deve ser exibido o total de pontos'''
+
+def montaTabuleiro(embarcações, tabuleiro):
+
+def tiro (coordenada, tabuleiro):
+    
+    
+embarcacoes = dict('S': (3 , 30), 'D': (5, 50), 'C': (7, 100)) 
+tabuleiro = 
+coordenadaX= int(input('digite a coordenada X: ))
+coordenadaY= int(input('digite a coordenada Y: ))
+coordenada = coordenadaX, coordenadaY
