@@ -78,31 +78,69 @@ print(compras(lista_de_compras, supermercado))
 -----------------------------------------------------------------------------------------
 '''15.Batalha Naval simples:
 a. Monte um dicionário com os tipos de embarcações:
-• 'S': submarinos, 3 posições, pontos 30
-• 'D': destroyers, 5 posições, pontos 50
-• 'C': cruzadores, 7 posições, pontos 100
+    • 'S': submarinos, 3 posições, pontos 30
+    • 'D': destroyers, 5 posições, pontos 50
+    • 'C': cruzadores, 7 posições, pontos 100
 b. Monte um dicionário com a localização das embarcações.
-• tupla da posição no mapa da embarcação: sigla da embarcação
+    • tupla da posição no mapa da embarcação: sigla da embarcação
 Observação: Há apenas uma embarcação de cada tipo
 Jogo:
-• O usuário digita as coordenadas separadas por virgula. ( -1,-1) para
+    • O usuário digita as coordenadas separadas por virgula. ( -1,-1) para
 finalizar
-• Caso tenha acertado alguma embarcação, o programa exibe o nome
+    • Caso tenha acertado alguma embarcação, o programa exibe o nome
 da embarcação, caso contrário exibe 'Água'.
-• Quando uma embarcação é totalmente destruída, o programa mostra
+    • Quando uma embarcação é totalmente destruída, o programa mostra
 os pontos obtidos.
 Término do programa:
-• quando o usuário desiste: coordenadas -1,-1
-• todas as embarcações foram destruídas.
+    • quando o usuário desiste: coordenadas -1,-1
+    • todas as embarcações foram destruídas.
 Em ambos os casos, deve ser exibido o total de pontos'''
+import random
 
 def montaTabuleiro(embarcações, tabuleiro):
+    return 'a fazer'
 
-def tiro (coordenada, tabuleiro):
+#FUNÇÃO QUE DIZ ONDE O TIRO ACERTOU
+def tiro (coordenadaX, coordenadaY, tabuleiro):
+    coordenada = coordenadaX, coordenadaY
+    if coordenada in tabuleiro:
+        return tabuleiro[coordenada]
+    else:
+        return None
     
+def pontos(embarcacoes, tiro):
+    pontos = 0
+    if tiro in embarcacoes:
+        pontos += embarcacoes[tiro][1]
+        
+    return pontos
     
-embarcacoes = dict('S': (3 , 30), 'D': (5, 50), 'C': (7, 100)) 
-tabuleiro = 
+
+embarcacoes = {'S': (3 , 30), 'D': (5, 50), 'C': (7, 100)} 
+#tabuleiro = montaTabuleiro(embarcacoes)
+tabuleiro = {(1,1):'S',(2,1):'S',(3,1) :'S',(2,7): 'D', (3,7): 'D', (4,7): 'D', (5,7): 'D', (6,7): 'D', (2,9): 'C',(3,9): 'C',(4,9): 'C',(5,9): 'C',(6,9): 'C',(7,9): 'C',(8,9): 'C'}
+
+ 
+#INICIO DO JOGO
 coordenadaX= int(input('digite a coordenada X: '))
-coordenadaY= int(input('digite a coordenada Y: '))
-coordenada = coordenadaX, coordenadaY
+pontosTotais = 0
+
+while coordenadaX != -1:
+    
+    coordenadaY= int(input('digite a coordenada Y: '))
+    tirof = tiro(coordenadaX, coordenadaY, tabuleiro)
+    #PRINTA ONDE O TIRO ACERTOU
+    if tirof == None:
+        print('Água!')
+    else:
+        pontosTotais += pontos(embarcacoes, tirof)
+        if tirof == 'S':
+            print('ACERTOU O SUBMARINO')
+        elif tirof == 'D':
+            print('ACERTOU O DESTROYER')
+        else:
+            print('ACERTOU O CRUZADOR')
+            
+    coordenadaX= int(input('digite a coordenada X: '))
+    
+print('Seus pontos finais foram: %d' %(pontosTotais))
