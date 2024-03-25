@@ -101,8 +101,7 @@ def montaTabuleiro(embarcações, tabuleiro):
     return 'a fazer'
 
 #FUNÇÃO QUE DIZ ONDE O TIRO ACERTOU
-def tiro (coordenadaX, coordenadaY, tabuleiro):
-    coordenada = coordenadaX, coordenadaY
+def tiro (coordenada, tabuleiro):
     if coordenada in tabuleiro:
         return tabuleiro[coordenada]
     else:
@@ -118,29 +117,34 @@ def pontos(embarcacoes, tiro):
 
 embarcacoes = {'S': (3 , 30), 'D': (5, 50), 'C': (7, 100)} 
 #tabuleiro = montaTabuleiro(embarcacoes)
-tabuleiro = {(1,1):'S',(2,1):'S',(3,1) :'S',(2,7): 'D', (3,7): 'D', (4,7): 'D', (5,7): 'D', (6,7): 'D', (2,9): 'C',(3,9): 'C',(4,9): 'C',(5,9): 'C',(6,9): 'C',(7,9): 'C',(8,9): 'C'}
+tabuleiro = {(1,1):'S',(2,1):'S',(3,1) :'S'}
 
  
 #INICIO DO JOGO
 coordenadaX= int(input('digite a coordenada X: '))
+coordenadaY= int(input('digite a coordenada Y: '))
 pontosTotais = 0
 
-while coordenadaX != -1:
+while coordenadaX != -1 or coordenadaY != -1 or tabuleiro != {}:
+    coordenada = coordenadaX, coordenadaY
+    tirof = tiro(coordenada, tabuleiro)
     
-    coordenadaY= int(input('digite a coordenada Y: '))
-    tirof = tiro(coordenadaX, coordenadaY, tabuleiro)
     #PRINTA ONDE O TIRO ACERTOU
     if tirof == None:
         print('Água!')
     else:
         pontosTotais += pontos(embarcacoes, tirof)
+        tabuleiro.pop(coordenada)
         if tirof == 'S':
             print('ACERTOU O SUBMARINO')
         elif tirof == 'D':
             print('ACERTOU O DESTROYER')
         else:
             print('ACERTOU O CRUZADOR')
-            
+
     coordenadaX= int(input('digite a coordenada X: '))
+    coordenadaY= int(input('digite a coordenada Y: '))
+    
+    
     
 print('Seus pontos finais foram: %d' %(pontosTotais))
