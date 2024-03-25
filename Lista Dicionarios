@@ -103,6 +103,6 @@ def tiro (coordenada, tabuleiro):
     
 embarcacoes = dict('S': (3 , 30), 'D': (5, 50), 'C': (7, 100)) 
 tabuleiro = 
-coordenadaX= int(input('digite a coordenada X: ))
-coordenadaY= int(input('digite a coordenada Y: ))
+coordenadaX= int(input('digite a coordenada X: '))
+coordenadaY= int(input('digite a coordenada Y: '))
 coordenada = coordenadaX, coordenadaY
