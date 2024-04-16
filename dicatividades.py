@@ -27,6 +27,7 @@
 
 #Escreva a seguir sua função:
 
+#Perguntar se está certo esse tipo de manipulação
 def criaDic(dAtiv):
     dicProfAtividade = dict()
     for atividade, dicProf in dAtiv.items():
