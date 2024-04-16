@@ -21,7 +21,7 @@ from contabancaria import ContaBancaria
 
 class ContaEspecial(ContaBancaria):
     def __init__(self, numero, nome, senha, limite, saldo):
-        super().__init__(numero, nome, senha, saldo)
+        super().__init__(numero, senha, nome, saldo)
         self.limite = limite
     
     def __str__(self):
@@ -36,3 +36,7 @@ class ContaEspecial(ContaBancaria):
                 self.saldo -= saldoLimite
             else:
                 print('SALDO INSUFICIENTE!')
+
+
+listaContas=[ContaEspecial(123, 'dudu', 1098, 50.00, 1000),ContaEspecial(456, 'fabio', 1111, 100.00, 1500),ContaBancaria(789, 6666, 'caca', 3000),ContaBancaria(1010, 9999, 'baba', 500)]
+print(listaContas)
