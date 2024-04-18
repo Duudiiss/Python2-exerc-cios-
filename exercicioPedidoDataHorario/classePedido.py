@@ -29,4 +29,43 @@ retornado será o valor original – 10% (não altere o valor original). Do cont
 próprio valor original.
  método obtemValor'''
 from classehorario import Horario
-class Pedido()
+from dataP1 import Data
+class Pedido:
+    def __init__(self, id, cliente, valor, horario, data= Data(), hora_entrega=Horario()):
+        self.id = id
+        self.cliente = cliente
+        self.valor = valor
+        self.horarioIni = horario
+        self.data = data
+        self.horarioFim = hora_entrega
+
+    def __str__(self):
+        return 'Num:22- Cli:lala- Data:18/09/2023- Horario:14:30:00- Status:EmAndamento'
+    
+    def __repr__(self):
+        return 'Num:22- Cli:lala- Data:18/09/2023- Horario:14:30:00- Status:EmAndamento'
+    def __lt__(self, outro):
+        if self.data == outro.data:
+            return self.horarioIni < outro.horarioIni
+        else:
+            return self.data < outro.data
+
+
+    def obtemStatus(self):
+        if self.horarioFim != Data():
+            return 'Entregue'
+        else:
+            return 'Em andamento'
+        
+    def registraHorarioDeEntrega(self, horaRegistro):
+        self.horarioFim = horaRegistro
+        return
+    def calculaTempoDeEspera(self):
+        tempo = self.horarioIni - self.horarioFim
+
+    def obtemValor(self):
+        if self.data.mes == 9:
+            valorPedido = self.valor - (self.valor*0.1)
+            return valorPedido
+        else:
+            return self.valor
