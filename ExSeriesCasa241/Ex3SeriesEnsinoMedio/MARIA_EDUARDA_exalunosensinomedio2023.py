@@ -146,3 +146,8 @@ seriesBool= (srAltura>=1.60) & (srAltura<=1.75)
 srAcfaixa = srAltura.loc[(srAltura>=1.60) & (srAltura<=1.75)]
 print(seriesBool)
 print(srAcfaixa)
+
+# abaixo de 1.70
+srBool170 = srAltura<1.70
+'''se pedir .sum() de series booleanas ele te da a quantidade de valores true naquela series'''
+print(srBool170.sum())
