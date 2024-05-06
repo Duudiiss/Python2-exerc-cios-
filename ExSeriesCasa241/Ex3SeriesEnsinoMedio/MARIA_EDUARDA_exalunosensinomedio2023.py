@@ -132,3 +132,17 @@ faixas de alturas (srTabFax)
 '''
 # srTabFax.plot.pie(title="grafico de pizza ALTURAS", colors= ['c','m','r','b','k','g','y'], legend = True, figsize=(10,10))
 
+#############filtros#################
+#retorna series com valores booleanos
+srBoolAlturaMior = srAltura>1.80
+print(srBoolAlturaMior)
+
+# alunos com altura acima
+srAc180 = srAltura.loc[srAltura>1.80]
+print(srAc180)
+
+# series com valores em uma faixa
+seriesBool= (srAltura>=1.60) & (srAltura<=1.75)
+srAcfaixa = srAltura.loc[(srAltura>=1.60) & (srAltura<=1.75)]
+print(seriesBool)
+print(srAcfaixa)
