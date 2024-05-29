@@ -234,7 +234,7 @@ print(dfOutro)
 
 #Exibindo ordenado pelos valores do Grau1
 print('\nExibindo ordenado pelos valores do Grau1  ')
-print(dfOutro.sort_values(by='Grau1'))
+print(dfOutro.sort_values(by='Grau1'))# se quiser ao contrario usar, ascending=True
 
 #Exibindo ordenado pelos valores do [Grau1,Grau2]
 print('\nExibindo ordenado pelos valores do [Grau1,Grau2]  ')
@@ -320,10 +320,13 @@ print('\n---------31----------')
 print('\nDf Alunos com nota de Grau1 >= 6')
 
 print('\ndfGraus.Grau1>=6 ??')
+dfBool = dfGraus>=6
 print(dfGraus.Grau1>=6)
+print(dfBool.sum().sum())
 
 print('\nDf resposta:')
 dfG1ac6= dfGraus.loc[dfGraus.Grau1>=6]
+
 print(dfG1ac6)
 
 
@@ -388,16 +391,12 @@ dfGraus['DESEMPENHO']= srDesempenho
 print('\n')
 print(dfGraus)
 
-print('\nMostre graficamente o percentual de alunos q pioraram')
-# dfGraus.DESEMPENHO.plot.pie(title='Desempenho')
-# plt.show()
-
+print('\nMostre graficamente a tabela de freq do desempenho')
+dfGraus['DESEMPENHO']= dfGraus.apply(avalDesempenho,axis=1)
+print('\n')
+print(dfGraus)
 
 dfGraus.DESEMPENHO.value_counts().plot.pie(title='Desempenho',
-                                           autopct='%.1f')
+                                           autopct='%.1f',
+                                           figsize = [5,5])
 plt.show()
-
-#INCOMPLETO
-
-
-
